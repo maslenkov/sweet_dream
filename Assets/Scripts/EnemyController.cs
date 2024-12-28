@@ -18,6 +18,8 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {   
+        if(Pause()) return;
+
         Vector3 fromQueue = player.PositionsHistory.Dequeue();
         // Log the position of the player
         // Debug.Log(fromQueue);
@@ -35,8 +37,8 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void Pause()
+    private bool Pause()
     {
-        Time.timeScale = 0;     
+        return false;    
     }
 }
