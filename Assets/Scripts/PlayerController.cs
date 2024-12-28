@@ -8,9 +8,9 @@ public class PlayerController : MonoBehaviour
     // public List<Vector2> PositionsHistory = new List<Vector2>();
     public Queue<Vector2> PositionsHistory = new Queue<Vector2>();
 
-    [SerializeField] private float XVelocityK = 5f;
+    private float XVelocityK = 5f;
 
-    private float YVelocityForce = 10f;
+    [SerializeField] private float YVelocityForce = 10f;
 
     private bool firstMove = true;
 
@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator SpawnEnemy()
     {
-        yield return new WaitForSeconds(2f); // wait for 2 seconds before spawning
+        yield return new WaitForSeconds(1f); // wait for 2 seconds before spawning
 
         // string enemyName = "Enemy"; // name of the enemy prefab
         // GameObject enemyPrefab = Resources.Load<GameObject>(enemyName);
