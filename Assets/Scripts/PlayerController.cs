@@ -8,44 +8,56 @@ public class PlayerController : MonoBehaviour
     // public List<Vector2> PositionsHistory = new List<Vector2>();
     public Queue<Vector2> PositionsHistory = new Queue<Vector2>();
 
+    private Rigidbody2D rb;
+
     private float XVelocityK = 5f;
 
-    [SerializeField] private float YVelocityForce = 10f;
+    private float jumpForce = 10f;
 
     private bool firstMove = true;
 
     [SerializeField] private GameObject enemyPrefab;
 
-    private void FixedUpdate()
+    private Vector3 previousPosition;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        previousPosition = transform.position;
+    }
+
+    private void Update()
     {
         if (Pause()) return;
 
-        // save position for first movement check
-        Vector3 lastPosition = transform.position;
+        // horizontal movement
+        float move = Input.GetAxis("Horizontal");
+        if (move != 0) 
+        {
+            rb.velocity = new Vector2(move * XVelocityK, rb.velocity.y);
+        }
 
         // jump/vertical movement
         if (Input.GetButtonDown("Jump"))
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, YVelocityForce), ForceMode2D.Impulse);
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
-
-        // horizontal movement
-        float move = Input.GetAxis("Horizontal");
-        Vector3 movement = new Vector3(move * XVelocityK, 0, 0);
-        transform.position += movement * Time.fixedDeltaTime;
-
-        if (firstMove && transform.position != lastPosition)
+        // check if the player has ever moved
+        if (firstMove && transform.position != previousPosition)
         {
             firstMove = false;
             EnqueueEnemySpawn();
         }
 
-        // save the player position to the attribute PositionsHistory
+        // save the player position to the attribute PositionsHistory array
         // PositionsHistory.Add(transform.position);
 
-        // save the player position to the attribute PositionsHistory
+        // save the player position to the attribute PositionsHistory queue
         PositionsHistory.Enqueue(transform.position);
+
+        // update the previous position
+        previousPosition = transform.position;
     }
 
     private bool Pause() 
