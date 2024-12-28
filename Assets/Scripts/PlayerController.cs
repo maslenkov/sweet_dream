@@ -8,7 +8,9 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    private float XVelocityK = 5f;
+    private float enemyAwakeTime = 2f;
+
+    private float xVelocityK = 5f;
 
     private float jumpForce = 10f;
 
@@ -41,7 +43,7 @@ public class PlayerController : MonoBehaviour
         float move = Input.GetAxis("Horizontal");
         if (move != 0) 
         {
-            rb.velocity = new Vector2(move * XVelocityK, rb.velocity.y);
+            rb.velocity = new Vector2(move * xVelocityK, rb.velocity.y);
         }
 
         // jump/vertical movement
@@ -76,7 +78,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator SpawnEnemy()
     {
-        yield return new WaitForSeconds(1f); // wait for 2 seconds before spawning
+        yield return new WaitForSeconds(enemyAwakeTime); // wait for 2 seconds before spawning
 
         if (enemyPrefab != null)
         {
