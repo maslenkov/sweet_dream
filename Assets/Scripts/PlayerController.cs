@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
 
     private bool firstMove = true;
 
+    private Vector2 pauseVelocity;
+    private bool pauseDataSaved = false;
+
     [SerializeField] private GameObject enemyPrefab;
 
     private Vector3 previousPosition;
@@ -22,17 +25,17 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         previousPosition = transform.position;
+        PlayerPrefs.SetInt("Pause", 0);
     }
 
     private void Update()
     {
-        // Pauses the game
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            Pause();
+        if (Pause()) {
+            SaveVelocityData();
+            return;
+        } else {
+            RestoreVelocityData();
         }
-
-        if (Pause()) return;
 
         // horizontal movement
         float move = Input.GetAxis("Horizontal");
@@ -63,7 +66,7 @@ public class PlayerController : MonoBehaviour
 
     private bool Pause() 
     {
-        return false;
+        return PlayerPrefs.GetInt("Pause", 0) == 1;
     }
 
     private void EnqueueEnemySpawn()
@@ -82,6 +85,26 @@ public class PlayerController : MonoBehaviour
         else
         {
             Debug.LogError("Enemy prefab not found in Resources folder.");
+        }
+    }
+
+    private void SaveVelocityData()
+    {
+        if (!pauseDataSaved) {
+            pauseVelocity = new Vector2(rb.velocity.x, rb.velocity.y);
+            rb.velocity = Vector2.zero;
+            rb.bodyType = RigidbodyType2D.Static;
+            pauseDataSaved = true;
+        }
+    }
+
+    private void RestoreVelocityData()
+    {
+        if (pauseDataSaved) {
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            rb.velocity = pauseVelocity;
+            pauseVelocity = Vector2.zero;
+            pauseDataSaved = false;
         }
     }
 }

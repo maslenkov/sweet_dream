@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {   
-        if(Pause()) return;
+        if (Pause()) return; // if pause is true, do not do anything
 
         Vector3 fromQueue = player.PositionsHistory.Dequeue();
         transform.position = fromQueue;
@@ -33,6 +33,6 @@ public class EnemyController : MonoBehaviour
 
     private bool Pause()
     {
-        return false;    
+        return PlayerPrefs.GetInt("Pause", 0) == 1;
     }
 }
