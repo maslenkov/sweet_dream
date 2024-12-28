@@ -3,7 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class ButtonBehaviour : MonoBehaviour
 {
-    private const string _mainComics = "MainComics"; 
+    private const string MAIN_COMICS = "MainComics"; 
+    private const string CREDITS = "CreditScene";
 
     public void OnExitClick()
     {
@@ -12,6 +13,11 @@ public class ButtonBehaviour : MonoBehaviour
 
     public void OnPlayClick()
     {
-        SceneManager.LoadScene(_mainComics);
+        SceneManager.LoadScene(MAIN_COMICS);
+    }
+
+    public void OnCreditsClick()
+    {
+        SceneManager.LoadScene(CREDITS);
     }
 }

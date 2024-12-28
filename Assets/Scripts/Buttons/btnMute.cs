@@ -6,6 +6,11 @@ public class btnMute : MonoBehaviour
 {
     public void OnMuteClick()
     {
-        AudioListener.pause = !AudioListener.pause;
+        if (PlayerPrefs.GetInt("Mute", 0) == 0)
+        {
+            PlayerPrefs.SetInt("Mute", 1);
+        } else {
+            PlayerPrefs.SetInt("Mute", 0);
+        }
     }
 }
