@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // QUESTION: should I use a List or a Queue? (Or a List of Queues?)
-    // public List<Vector2> PositionsHistory = new List<Vector2>();
-
     public Queue<Vector2> PositionsHistory = new Queue<Vector2>();
 
     private Rigidbody2D rb;
@@ -57,9 +54,6 @@ public class PlayerController : MonoBehaviour
             EnqueueEnemySpawn();
         }
 
-        // save the player position to the attribute PositionsHistory array
-        // PositionsHistory.Add(transform.position);
-
         // save the player position to the attribute PositionsHistory queue
         PositionsHistory.Enqueue(transform.position);
 
@@ -80,9 +74,6 @@ public class PlayerController : MonoBehaviour
     private IEnumerator SpawnEnemy()
     {
         yield return new WaitForSeconds(1f); // wait for 2 seconds before spawning
-
-        // string enemyName = "Enemy"; // name of the enemy prefab
-        // GameObject enemyPrefab = Resources.Load<GameObject>(enemyName);
 
         if (enemyPrefab != null)
         {

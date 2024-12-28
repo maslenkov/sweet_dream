@@ -9,7 +9,6 @@ using UnityEngine.SceneManagement;
 public class EnemyController : MonoBehaviour
 { 
     private PlayerController player;
-    // private int index = 0;
 
     private void Start()
     {
@@ -21,12 +20,7 @@ public class EnemyController : MonoBehaviour
         if(Pause()) return;
 
         Vector3 fromQueue = player.PositionsHistory.Dequeue();
-        // Log the position of the player
-        // Debug.Log(fromQueue);
-        // transform.position = Vector2.MoveTowards(transform.position, player.PositionsHistory[index], 0.1f);
-        // transform.position = Vector2.MoveTowards(transform.position, fromQueue, 0.1f);
         transform.position = fromQueue;
-        // index++;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
