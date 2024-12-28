@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Queue<Vector2> PositionsHistory = new Queue<Vector2>();
+    public Queue<Quaternion> RotationsHistory = new Queue<Quaternion>();
 
     private Rigidbody2D rb;
 
@@ -12,7 +13,7 @@ public class PlayerController : MonoBehaviour
 
     private float xVelocityK = 5f;
 
-    private float jumpForce = 10f;
+    private float jumpForce = 12f;
 
     private bool firstMove = true;
 
@@ -61,6 +62,7 @@ public class PlayerController : MonoBehaviour
 
         // save the player position to the attribute PositionsHistory queue
         PositionsHistory.Enqueue(transform.position);
+        RotationsHistory.Enqueue(transform.rotation);
 
         // update the previous position
         previousPosition = transform.position;

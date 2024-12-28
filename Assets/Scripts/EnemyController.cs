@@ -19,8 +19,8 @@ public class EnemyController : MonoBehaviour
     {   
         if (Pause()) return; // if pause is true, do not do anything
 
-        Vector3 fromQueue = player.PositionsHistory.Dequeue();
-        transform.position = fromQueue;
+        transform.position = player.PositionsHistory.Dequeue();
+        transform.rotation = player.RotationsHistory.Dequeue();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
