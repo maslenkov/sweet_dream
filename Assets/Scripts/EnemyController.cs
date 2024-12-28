@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 // require SceneMangement to restart the game
 using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour
-{
+{ 
     private PlayerController player;
     // private int index = 0;
 
@@ -16,7 +17,7 @@ public class EnemyController : MonoBehaviour
     }
 
     private void Update()
-    {
+    {   
         Vector3 fromQueue = player.PositionsHistory.Dequeue();
         // Log the position of the player
         // Debug.Log(fromQueue);
@@ -32,5 +33,10 @@ public class EnemyController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    private void Pause()
+    {
+        Time.timeScale = 0;     
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class ButtonBehaviour : MonoBehaviour
 {
-    private const string _playScene = "SampleScene"; 
+    private const string _mainComics = "MainComics"; 
 
     public void OnExitClick()
     {
@@ -12,6 +12,6 @@ public class ButtonBehaviour : MonoBehaviour
 
     public void OnPlayClick()
     {
-        SceneManager.LoadScene(_playScene);
+        SceneManager.LoadScene(_mainComics);
     }
 }

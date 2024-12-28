@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SlidePresettation : MonoBehaviour
 {
     private int _currentSlide = 0;
     private int _maxSlides = 0;
-    private List<GameObject> _slides = new List<GameObject>();
+    [SerializeField] private List<GameObject> _slides = new List<GameObject>();
 
     private void Start()
     {
@@ -27,6 +28,10 @@ public class SlidePresettation : MonoBehaviour
             _slides[_currentSlide].SetActive(false);
             _currentSlide++;
             _slides[_currentSlide].SetActive(true);
+        }
+        else
+        {
+            SceneManager.LoadScene("SampleScene");
         }
     }
 

@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     // QUESTION: should I use a List or a Queue? (Or a List of Queues?)
     // public List<Vector2> PositionsHistory = new List<Vector2>();
+
     public Queue<Vector2> PositionsHistory = new Queue<Vector2>();
 
     private Rigidbody2D rb;
@@ -28,6 +29,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        // Pauses the game
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Pause();
+        }
+
         if (Pause()) return;
 
         // horizontal movement
