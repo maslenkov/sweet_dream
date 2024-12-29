@@ -9,6 +9,12 @@ public class EndSlidesPresentation : MonoBehaviour
     private int _maxSlides = 0;
     [SerializeField] private List<GameObject> _slides = new List<GameObject>();
 
+    private void Awake()
+    {
+        SoundManager.instance.musicSource.clip = SoundManager.instance._musicClip1;
+        SoundManager.instance.musicSource.Play();
+    }
+
     private void Start()
     {
         foreach (Transform child in transform)
@@ -19,6 +25,18 @@ public class EndSlidesPresentation : MonoBehaviour
 
         _maxSlides = _slides.Count;
         _slides[_currentSlide].SetActive(true);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            NextSlide();
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            PreviousSlide();
+        }
     }
 
     public void NextSlide()
@@ -32,6 +50,8 @@ public class EndSlidesPresentation : MonoBehaviour
         else
         {
             SceneManager.LoadScene("CreditScene");
+            SoundManager.instance.musicSource.clip = SoundManager.instance._musicClip1;
+            SoundManager.instance.musicSource.Play();
         }
     }
 

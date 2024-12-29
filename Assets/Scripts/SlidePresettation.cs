@@ -21,6 +21,18 @@ public class SlidePresettation : MonoBehaviour
         _slides[_currentSlide].SetActive(true);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            NextSlide();
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            PreviousSlide();
+        }
+    }
+
     public void NextSlide()
     {
         if (_currentSlide < _maxSlides - 1)
@@ -31,6 +43,8 @@ public class SlidePresettation : MonoBehaviour
         }
         else
         {
+            SoundManager.instance.musicSource.clip = SoundManager.instance._musicClip2;
+            SoundManager.instance.musicSource.Play();
             SceneManager.LoadScene("SampleScene");
         }
     }
