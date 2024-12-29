@@ -50,8 +50,6 @@ public class EndSlidesPresentation : MonoBehaviour
         else
         {
             SceneManager.LoadScene("CreditScene");
-            SoundManager.instance.musicSource.clip = SoundManager.instance._musicClip1;
-            SoundManager.instance.musicSource.Play();
         }
     }
 
