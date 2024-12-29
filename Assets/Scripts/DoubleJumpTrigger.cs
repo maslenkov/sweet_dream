@@ -17,7 +17,12 @@ public class DoubleJumpTrigger : MonoBehaviour
         if (active) {
             player.doubleJump = true;
             active = false;
-            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<Animator>().SetBool("catched", true);
         }
+    }
+
+    public void DisableAnimation()
+    {
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 }

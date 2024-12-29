@@ -3768,6 +3768,7 @@ GameObject:
   - component: {fileID: 1438687687}
   - component: {fileID: 1438687690}
   - component: {fileID: 1438687689}
+  - component: {fileID: 1438687691}
   m_Layer: 0
   m_Name: Double Jump
   m_TagString: Untagged
@@ -3813,8 +3814,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1315696889
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -3446970934319941241, guid: d3fff1573f02149469c85890a782e71c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3870,8 +3871,8 @@ BoxCollider2D:
   m_Offset: {x: 0.0546875, y: 0.546875}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.43636364, y: -0.26086956}
-    oldSize: {x: 0.859375, y: 0.71875}
+    pivot: {x: 0.49206352, y: -0.14814815}
+    oldSize: {x: 1.26, y: 0.27}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3880,6 +3881,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.859375, y: 0.71875}
   m_EdgeRadius: 0
+--- !u!95 &1438687691
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438687686}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4d14c7df6cef143ce80b22eda7ba83e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1481590078
 GameObject:
   m_ObjectHideFlags: 0
