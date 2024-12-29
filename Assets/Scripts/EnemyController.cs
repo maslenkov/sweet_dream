@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class EnemyController : MonoBehaviour
 { 
     private PlayerController player;
+    public int index;
 
     private void Start()
     {
@@ -19,8 +20,8 @@ public class EnemyController : MonoBehaviour
     {   
         if (Pause()) return; // if pause is true, do not do anything
 
-        transform.position = player.PositionsHistory.Dequeue();
-        transform.rotation = player.RotationsHistory.Dequeue();
+        transform.position = player.PositionsHistory[index].Dequeue();
+        transform.rotation = player.RotationsHistory[index].Dequeue();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 // require SceneMangement to restart the game
@@ -7,8 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public Queue<Vector2> PositionsHistory = new Queue<Vector2>();
-    public Queue<Quaternion> RotationsHistory = new Queue<Quaternion>();
+    public Queue<Vector2>[] PositionsHistory = Enumerable.Range(1,3).Select(i => new Queue<Vector2>()).ToArray();
+    public Queue<Quaternion>[] RotationsHistory = Enumerable.Range(1,3).Select(i => new Queue<Quaternion>()).ToArray();
     public bool doubleJump = false;
     public bool inFirstJump = false;
 
@@ -70,8 +71,10 @@ public class PlayerController : MonoBehaviour
         }
 
         // save the player position to the attribute PositionsHistory queue
-        PositionsHistory.Enqueue(transform.position);
-        RotationsHistory.Enqueue(transform.rotation);
+        for (int i = 0; i < EnemyCount(); i++) {
+            PositionsHistory[i].Enqueue(transform.position);
+            RotationsHistory[i].Enqueue(transform.rotation);
+        }
 
         if (transform.position.y <= (Camera.main.ScreenToWorldPoint(Vector2.zero).y - 0.75)) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -88,16 +91,19 @@ public class PlayerController : MonoBehaviour
 
     private void EnqueueEnemySpawn()
     {
-        StartCoroutine(SpawnEnemy());
+        for (int i = 0; i < EnemyCount(); i++) {
+            StartCoroutine(SpawnEnemy(i, i * EnemyAwakeTime() + EnemyAwakeTime()));
+        }
     }
 
-    private IEnumerator SpawnEnemy()
+    private IEnumerator SpawnEnemy(int index, float delay)
     {
-        yield return new WaitForSeconds(EnemyAwakeTime());
+        yield return new WaitForSeconds(delay);
 
         if (enemyPrefab != null)
         {
-            Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+            GameObject enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+            enemy.GetComponent<EnemyController>().index = index;
         }
         else
         {
