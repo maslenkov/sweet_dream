@@ -9,7 +9,7 @@ public class EndTriggerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-           SceneManager.LoadScene("EndComics");        
+            other.gameObject.GetComponent<PlayerController>().finished = true;
         }
     }
 }

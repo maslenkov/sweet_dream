@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public Queue<Quaternion>[] RotationsHistory = Enumerable.Range(1,3).Select(i => new Queue<Quaternion>()).ToArray();
     public bool doubleJump = false;
     public bool inFirstJump = false;
+    public bool finished = false;
 
     private Rigidbody2D rb;
 
@@ -37,7 +38,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Pause()) {
+        if (Pause() || finished) {
+            if (finished) {
+                TheEnd();
+            }
             SaveVelocityData();
             return;
         } else {
@@ -158,5 +162,16 @@ public class PlayerController : MonoBehaviour
     private float EnemyAwakeTime()
     {
         return PlayerPrefs.GetFloat("EnemyAwakeTime", 2.5f); // default value is 2.5 seconds (easy)
+    }
+
+    private void TheEnd()
+    {
+        Camera cam = Camera.main.GetComponent<Camera>();
+        cam.transform.position = Vector3.MoveTowards(cam.transform.position, new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z), 0.2f);
+        cam.orthographicSize = Mathf.SmoothStep(cam.orthographicSize, 0.5f, 0.2f);
+        if (cam.orthographicSize <= 0.6f)
+        {
+            SceneManager.LoadScene("EndComics");
+        }
     }
 }
