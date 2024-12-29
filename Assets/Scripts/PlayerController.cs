@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// require SceneMangement to restart the game
+using UnityEngine.SceneManagement;
+
 public class PlayerController : MonoBehaviour
 {
     public Queue<Vector2> PositionsHistory = new Queue<Vector2>();
@@ -71,6 +74,10 @@ public class PlayerController : MonoBehaviour
         // save the player position to the attribute PositionsHistory queue
         PositionsHistory.Enqueue(transform.position);
         RotationsHistory.Enqueue(transform.rotation);
+
+        if (transform.position.y <= (Camera.main.ScreenToWorldPoint(Vector2.zero).y - 0.75)) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
 
         // update the previous position
         previousPosition = transform.position;
