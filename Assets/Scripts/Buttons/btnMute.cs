@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class btnMute : MonoBehaviour
 {
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            OnMuteClick();
+        }
+    }
+
     public void OnMuteClick()
     {
         if (PlayerPrefs.GetInt("Mute", 0) == 0)
