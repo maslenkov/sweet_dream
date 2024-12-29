@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // jump/vertical movement
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
@@ -110,5 +110,18 @@ public class PlayerController : MonoBehaviour
             pauseVelocity = Vector2.zero;
             pauseDataSaved = false;
         }
+    }
+
+    private bool IsGrounded()
+    {
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, 1f);
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.collider != null && hit.collider.tag != "Enemy" && hit.collider.tag != "Player")
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
