@@ -14,8 +14,6 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    private float enemyAwakeTime = 2f;
-
     private float xVelocityK = 5f;
 
     private float jumpForce = 12f;
@@ -95,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator SpawnEnemy()
     {
-        yield return new WaitForSeconds(enemyAwakeTime); // wait for 2 seconds before spawning
+        yield return new WaitForSeconds(EnemyAwakeTime());
 
         if (enemyPrefab != null)
         {
@@ -144,5 +142,15 @@ public class PlayerController : MonoBehaviour
     private bool DoubleJumpAllowed()
     {
         return doubleJump && inFirstJump;
+    }
+
+    private int EnemyCount()
+    {
+        return PlayerPrefs.GetInt("EnemyCount", 1); // default value is 1 enemy (easy)
+    }
+
+    private float EnemyAwakeTime()
+    {
+        return PlayerPrefs.GetFloat("EnemyAwakeTime", 2.5f); // default value is 2.5 seconds (easy)
     }
 }
