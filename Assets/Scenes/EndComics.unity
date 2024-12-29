@@ -180,7 +180,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8041599992852165437, guid: 9c3d3cfd721339643a463245cf710018, type: 3}
+  m_Sprite: {fileID: 1193807436549989654, guid: 6edc25144e73f974e9ec558f3fa609d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -215,7 +215,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 323661326}
-  - component: {fileID: 323661325}
+  - component: {fileID: 323661327}
   m_Layer: 0
   m_Name: Slides
   m_TagString: Untagged
@@ -223,19 +223,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &323661325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 323661324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74d49f813f9e1c544ac034ecb5a4ac72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _slides: []
 --- !u!4 &323661326
 Transform:
   m_ObjectHideFlags: 0
@@ -255,6 +242,19 @@ Transform:
   m_Father: {fileID: 668545142}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &323661327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323661324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdf736baa42ff1f4ea454107456f702d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slides: []
 --- !u!1 &430371656
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,8 +687,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 323661325}
-        m_TargetAssemblyTypeName: SlidePresettation, Assembly-CSharp
+      - m_Target: {fileID: 323661327}
+        m_TargetAssemblyTypeName: EndSlidesPresentation, Assembly-CSharp
         m_MethodName: PreviousSlide
         m_Mode: 1
         m_Arguments:
@@ -795,7 +795,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1515799745614571212, guid: acd26b7bb7602b845be888ffd37ff532, type: 3}
+  m_Sprite: {fileID: -851646568893965882, guid: 98ea5275358170347bb01c1cc3940d38, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -879,7 +879,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 3723910160145934523, guid: faaf655648d37f543b9488f85359e8ae, type: 3}
+  m_Sprite: {fileID: -3178632332609055830, guid: bef9b3ef2e51eea47872b48568d676c2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1156,7 +1156,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 5319777179475447978, guid: 73294764a32b84d4a8089b91e2c3bf2d, type: 3}
+  m_Sprite: {fileID: -8375704267486616108, guid: 3abd1ce978c159d499c4db3d54770bb0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1251,8 +1251,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 323661325}
-        m_TargetAssemblyTypeName: SlidePresettation, Assembly-CSharp
+      - m_Target: {fileID: 323661327}
+        m_TargetAssemblyTypeName: EndSlidesPresentation, Assembly-CSharp
         m_MethodName: NextSlide
         m_Mode: 1
         m_Arguments:

@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/CreditScene.unity
     guid: 305378292d209e8468168dca7040cafa
   - enabled: 1
-    path: Assets/Scenes/MainComics.unity
+    path: Assets/Scenes/EndComics.unity
     guid: 869b3232cd00f914095986c9c338d84b
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
