@@ -712,7 +712,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 1051079818}
   _musicClip1: {fileID: 8300000, guid: 4cc7f2bc61a3da3438e0db2dfaafc47e, type: 3}
-  _musicClip2: {fileID: 8300000, guid: a62a9aa009a12e7439f746021d203396, type: 3}
+  _musicClip2: {fileID: 8300000, guid: 3af2d291b70f3fa44a19203756590611, type: 3}
 --- !u!82 &1051079818
 AudioSource:
   m_ObjectHideFlags: 0
