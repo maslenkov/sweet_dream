@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public Queue<Vector2> PositionsHistory = new Queue<Vector2>();
     public Queue<Quaternion> RotationsHistory = new Queue<Quaternion>();
+    public bool doubleJump = false;
+    public bool inFirstJump = false;
 
     private Rigidbody2D rb;
 
@@ -48,8 +50,14 @@ public class PlayerController : MonoBehaviour
         }
 
         // jump/vertical movement
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButtonDown("Jump") && (IsGrounded() || DoubleJumpAllowed()))
         {
+            if (IsGrounded())
+            {
+                inFirstJump = true;
+            } else {
+                inFirstJump = false;
+            }
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
@@ -117,11 +125,17 @@ public class PlayerController : MonoBehaviour
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, 1f);
         foreach (RaycastHit2D hit in hits)
         {
-            if (hit.collider != null && hit.collider.tag != "Enemy" && hit.collider.tag != "Player")
+            if (hit.collider != null && hit.collider.CompareTag("Ground"))
             {
+                inFirstJump = false;
                 return true;
             }
         }
         return false;
+    }
+
+    private bool DoubleJumpAllowed()
+    {
+        return doubleJump && inFirstJump;
     }
 }
