@@ -10,11 +10,11 @@ public class EndSlidesPresentation : MonoBehaviour
     private int _maxSlides = 0;
     [SerializeField] private List<GameObject> _slides = new List<GameObject>();
 
-    //private void Awake()
-    //{
-    //    SoundManager.instance.musicSource.clip = SoundManager.instance._musicClip1;
-    //    SoundManager.instance.musicSource.Play();
-    //}
+    private void Awake()
+    {
+        SoundManager.instance.musicSource.clip = SoundManager.instance._musicClip1;
+        SoundManager.instance.musicSource.Play();
+    }
 
     private void Start()
     {
