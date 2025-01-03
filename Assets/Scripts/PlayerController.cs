@@ -8,6 +8,17 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    // private void Awake()
+    // {
+    //     if (SoundManager.instance == null)
+    //     {
+    //         // Instantiate(Resources.Load("SoundManager"));
+    //     } else {
+    //         SoundManager.instance.musicSource.clip = SoundManager.instance._musicClip1;
+    //         SoundManager.instance.musicSource.Play();
+    //     }
+    // }
+
     public Queue<Vector2>[] PositionsHistory = Enumerable.Range(1,3).Select(i => new Queue<Vector2>()).ToArray();
     public Queue<Quaternion>[] RotationsHistory = Enumerable.Range(1,3).Select(i => new Queue<Quaternion>()).ToArray();
     public bool doubleJump = false;
@@ -20,20 +31,16 @@ public class PlayerController : MonoBehaviour
 
     private float jumpForce = 12f;
 
-    private bool firstMove = true;
-
     private Vector2 pauseVelocity;
     private bool pauseDataSaved = false;
 
     [SerializeField] private GameObject enemyPrefab;
 
-    private Vector3 previousPosition;
-
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        previousPosition = transform.position;
         PlayerPrefs.SetInt("Pause", 0);
+        EnqueueEnemySpawn();
     }
 
     private void Update()
@@ -67,25 +74,20 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
-        // check if the player has ever moved
-        if (firstMove && transform.position != previousPosition)
-        {
-            firstMove = false;
-            EnqueueEnemySpawn();
-        }
-
-        // save the player position to the attribute PositionsHistory queue
-        for (int i = 0; i < EnemyCount(); i++) {
-            PositionsHistory[i].Enqueue(transform.position);
-            RotationsHistory[i].Enqueue(transform.rotation);
-        }
-
         if (transform.position.y <= (Camera.main.ScreenToWorldPoint(Vector2.zero).y - 0.75)) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
 
-        // update the previous position
-        previousPosition = transform.position;
+    private void FixedUpdate()
+    {
+
+        // save the player position to the attribute PositionsHistory queue
+        for (int i = 0; i < EnemyCount(); i++)
+        {
+            PositionsHistory[i].Enqueue(transform.position);
+            RotationsHistory[i].Enqueue(transform.rotation);
+        }
     }
 
     private bool Pause() 

@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {   
         if (Pause() || Finshed()) return; // if pause is true, do not do anything
 

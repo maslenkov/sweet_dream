@@ -12,8 +12,13 @@ public class EndSlidesPresentation : MonoBehaviour
 
     private void Awake()
     {
-        SoundManager.instance.musicSource.clip = SoundManager.instance._musicClip1;
-        SoundManager.instance.musicSource.Play();
+        if (SoundManager.instance == null)
+        {
+            // Instantiate(Resources.Load("SoundManager"));
+        } else {
+            SoundManager.instance.musicSource.clip = SoundManager.instance._musicClip1;
+            SoundManager.instance.musicSource.Play();
+        }
     }
 
     private void Start()

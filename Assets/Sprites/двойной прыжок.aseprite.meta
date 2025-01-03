@@ -148,9 +148,8 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: "\u0434\u0432\u043E\u0439\u043D\u043E\u0439 \u043F\u0440\u044B\u0436\u043E\u043A"
+    - name: "\u0434\u0432\u043E\u0438\u0306\u043D\u043E\u0438\u0306 \u043F\u0440\u044B\u0436\u043E\u043A"
       frameIndex: 0
-      additiveSortOrder: 0
       cellRect:
         x: 8
         y: 12

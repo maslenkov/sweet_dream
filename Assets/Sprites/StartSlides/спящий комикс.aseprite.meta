@@ -150,7 +150,6 @@ ScriptedImporter:
     cells:
     - name: "\u0441\u043F\u044F\u0449\u0438\u0439 \u043A\u043E\u043C\u0438\u043A\u0441"
       frameIndex: 0
-      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
